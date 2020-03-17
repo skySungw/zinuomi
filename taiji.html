@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		/*div {
+			width: 512px;
+			height: 512px;
+			background: url(./bg.jpg) repeat-y;
+			background-size: 100% 100%;
+			background-position: 0 0;
+		}*/
+		html,
+		body {
+			background: green;
+		}
+		* {margin:0;padding:0;}
+
+		/* 太极 */
+		.container {
+			/*margin: 200px auto;*/
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			overflow: hidden;
+			animation: round 3s linear 3.5s infinite;
+		}
+		/* 再来一版*/
+		.container .taiji {
+			position: relative;
+			width: 150px;
+			height: 300px;
+			background: #fff;
+			/*box-shadow: 150px 0 0 #000;*/
+			animation:  start 1s ease-in-out 0s 1 alternate forwards;
+			/*animation:  round 2s linear 3s infinite;*/
+		}
+		.container .taiji:before {
+			content: '';
+			position: absolute;
+			width: 150px;
+			height: 150px;
+			background: #fff;
+			border-radius: 50%;
+			top: 0;
+			left: 75px;
+			/*box-shadow: 0 0 0 #000;*/
+			opacity: 0;
+			animation: one 1s ease-in-out 1s 1 alternate forwards;
+		}
+		.container .taiji:after{
+			content: '';
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background: #000;
+			left: 130px;
+			top: 55px;
+			opacity: 0;
+			animation: two 1s ease-in-out 2s 1 alternate forwards;
+		}
+		@keyframes start {
+			from {
+				opacity: 0;
+				box-shadow: 0 0 0 #000;
+			}
+			to {
+				opacity: 1;
+				box-shadow: 150px 0 0 #000;
+			}
+		}
+		@keyframes one {
+			from {
+				opacity: 0;
+				box-shadow: 0 0 0 #000;
+			}
+			to {
+				opacity: 1;
+				box-shadow: 0 150px 0 #000;
+			}
+		}
+		@keyframes two {
+			from {
+				opacity: 0;
+				box-shadow: 0 0 0 #000;
+			}
+			to {
+				opacity: 1;
+				box-shadow: 0 150px 0 #fff;
+			}
+		}
+		@keyframes round {
+			from {
+				transform: rotate(0);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+		@keyframes qian {
+			from {
+				transform: translate3d(0 , 0, 0);
+			}
+			to {
+				transform: translate3d(0 , -200px, 0);
+				opacity: 1;
+			}
+		}
+		@keyframes kun {
+			from {
+				transform: translate3d(0 , 0, 0);
+			}
+			to {
+				transform: translate3d(0 , 200px, 0);
+				opacity: 1;
+			}
+		}
+		@keyframes zhen {
+			from {
+				left: 0;
+				bottom: -100px;
+				transform: rotate(-0deg);
+			}
+			to {
+				left: -140px;
+				bottom: -285px;
+				transform: rotate(-125deg);
+				opacity: 1;
+			}
+		}
+		@keyframes xun {
+			from {
+				left: 0;
+				top: 100px;
+				transform: rotate(0deg);
+			}
+			to {
+				left: 190px;
+				top: -40px;
+				transform: rotate(50deg);
+				opacity: 1;
+			}
+		}
+		@keyframes kan {
+			from {
+				left: 100px;
+				top: 100px;
+				transform: rotate(0deg);
+			}
+			to {
+				left: 255px;
+				top: 100px;
+				transform: rotate(90deg);
+				opacity: 1;
+			}
+		}
+		@keyframes li {
+			from {
+				left: 0;
+				top: 100px;
+				transform: rotate(0deg);
+			}
+			to {
+				left: -155px;
+				top: 100px;
+				transform: rotate(90deg);
+				opacity: 1;
+			}
+		}
+		@keyframes gen {
+			from {
+				left: 0;
+				bottom: -100px;
+				transform: rotate(0deg);
+			}
+			to {
+				left: 225px;
+				bottom: -245px;
+				transform: rotate(135deg);
+				opacity: 1;
+			}
+		}
+		@keyframes dui {
+			from {
+				left: 0;
+				top: 100px;
+				transform: rotate(0deg);
+			}
+			to {
+				left: -155px;
+				top: -5px;
+				transform: rotate(-50deg);
+				opacity: 1;
+			}
+		}
+		.content .items {
+			position: absolute;
+			margin-top: 20px;
+			margin-right: 20px;
+			width: 100px;
+			height: 50px;
+			left: 100px;
+			transition: rotate(0deg);
+		}
+		.content .item {
+			position: relative;
+			width: 40px;
+			height: 10px;
+			background: #000;
+			box-shadow: 50px 0 0 #000;
+			opacity: 0;
+		}
+		.content .item:before,
+		.content .item:after {
+			content: '';
+			position: absolute;
+			width: 40px;
+			height: 10px;
+			top: 20px;
+			background: #000;
+			box-shadow: 50px 0 0 #000;
+		}
+		.content .item:after {
+			top: 40px;
+		}
+		.content .qian {
+			top: 100px;
+			animation: qian 1s ease-in-out 3.5s 1 alternate forwards;
+		}
+		.content .kun {
+			top: 100px;
+			animation: kun 1s ease-in-out 4.5s 1 alternate forwards;
+		}
+		.content .zhen {
+			bottom: -100px;
+			animation: zhen 1s ease-in-out 5.5s 1 alternate forwards;
+		}
+		.content .xun {
+			top: 100px;
+			animation: xun 1s ease-in-out 6.5s 1 alternate forwards;
+		}
+		.content .kan {
+			top: 100px;
+			animation: kan 1s ease-in-out 7.5s 1 alternate forwards;
+		}
+		.content .li {
+			top: 100px;
+			animation: li 1s ease-in-out 8.5s 1 alternate forwards;
+		}
+		.content .gen {
+			bottom: -100px;
+			animation: gen 1s ease-in-out 9.5s 1 alternate forwards;
+		}
+		.content .dui {
+			top: 100px;
+			animation: dui 1s ease-in-out 10.5s 1 alternate forwards;
+		}
+		.content .qian,
+		.content .qian:before,
+		.content .qian:after,
+		.content .gen,
+		.content .xun,
+		.content .xun:before,
+		.content .kan:before,
+		.content .li,
+		.content .li:after,
+		.content .dui:after,
+		.content .dui:before,
+		.content .zhen:after {
+			width: 45px;
+			box-shadow: 45px 0 0 #000;	
+		}
+		.content {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.relative {
+			position: relative;
+			width: 300px;
+			height: 300px;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="relative">
+		<div class="container">
+			<div class="taiji"></div>
+		</div>
+		<div class="content">
+			<div class="items">
+				<div class="item qian"></div>	
+			</div>
+			<div class="items">
+				<div class="item xun"></div>
+			</div>
+			<div class="items">
+				<div class="item li"></div>
+			</div>
+			<div class="items">
+				<div class="item gen"></div>
+			</div>
+			<div class="items">
+				<div class="item zhen"></div>
+			</div>
+			<div class="items">
+				<div class="item kan"></div>
+			</div>
+			<div class="items">
+				<div class="item dui"></div>
+			</div>
+			<div class="items">
+				<div class="item kun"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <div id="bg"></div> -->
+	<!-- <script type="text/javascript">
+		var bg = document.getElementById('bg');
+		bg.style.backgroundPosition = '0 0';
+		// 结束标识
+		var stop = false;
+		// y轴滚动
+		var scrollY = 0;
+		// y轴滚动timer
+		var timer = null;
+		// y轴滚动方法
+		function bgMove() {
+			if (stop) {
+				clearTimeout(timer);
+			} else {
+				timer = setTimeout(function(){
+					if(scrollY <= 100) {
+						scrollY += 1;
+					} else if (scrollY > 100 && scrollY <= 500) {
+						scrollY += 2;
+					} else if (scrollY > 500 && scrollY <= 5000) {
+						scrollY += 4;
+					} else {
+						stop = true;
+					}
+					console.log(scrollY)
+					bg.style.backgroundPosition = '0 ' + scrollY + 'px';
+					bgMove();
+				}, 10);
+			}
+		}
+		// start 滚动方法
+		bgMove();
+	</script> -->
+</body>
+</html>
