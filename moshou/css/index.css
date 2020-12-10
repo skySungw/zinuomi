@@ -1,0 +1,29 @@
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+#app {
+  min-height: 100%;
+  height: 100%;
+}
+.el-header {
+  background-color: #B3C0D1;
+  color: #333;
+  line-height: 60px;
+}
+
+.el-aside {
+  color: #333;
+}
+/** total-detail **/
+.h100 {
+  padding: 0 10px;
+  min-height: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
