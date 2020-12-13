@@ -4,160 +4,1946 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>魔兽计算器</title>
-  <link rel="stylesheet" href="./moshou/css/element.css">
-  <link rel="stylesheet" href="./moshou/css/index.css">
+  <link rel="stylesheet" href="./css/element.css">
+  <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
   <div id="app">
     <el-container style="height: 100%; border: 1px solid #eee">
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose">
-         
-          <el-menu-item index="3">
-            <i class="el-icon-document"></i>
-            <span slot="title">计算器</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">信息栏</span>
-          </el-menu-item>
-        </el-menu>
-      </el-aside>
       <el-container>
-        <el-main>
-          <el-col :span="4" class="h100">
-            <div class="total-detail">
-              <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px">
-                <el-collapse v-model="activeNames" @change="handleChange">
-                  <el-collapse-item v-for="(item, index) in bossList" :title="index + 1 + '、' + item.name" :name="index">
-                    <div v-for="(itemInfo, i) in dynamicValidateForm[index]">
-                      <el-form-item
-                        :label="item.children[i].name"
-                        :key="itemInfo.key"
-                        :prop="index + '.' + i + '.value'"
-                      >
-                        <el-input v-model="itemInfo.value" type="number">
-                      </el-form-item>
+        <el-main class="pd-0">
+          <el-form :model="dynamicValidateForm" ref="dynamicValidateForm">
+            <el-col :span="12" class="font-12">
+              <div>
+                <div class="flex">
+                  <div class="flex-1 font-12">
+                    <div class="total-detail">
+                        <dl class="dl flex font-18">
+                          <dt class="w70">Boss</dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <div class="flex-1">装备</div>
+                              <div class="w80">金额</div>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[0].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value0']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[0].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value0']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value0']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value1']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[0].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value1']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value1']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value2']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[0].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value2']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value2']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value3']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[0].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value3']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value3']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[1].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value4']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[1].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value4']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value4']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value5']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[1].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value5']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value5']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value6']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[1].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value6']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value6']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value7']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[1].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value7']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value7']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[2].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value8']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[2].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value8']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value8']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value9']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[2].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value9']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value9']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value10']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[2].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value10']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value10']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value11']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[2].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value11']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value11']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[3].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value12']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[3].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value12']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value12']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value13']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[3].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value13']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value13']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value14']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[3].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value14']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value14']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value15']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[3].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value15']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value15']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[4].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value16']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[4].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value16']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value16']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value17']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[4].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value17']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value17']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value18']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[4].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value18']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value18']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value19']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[4].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value19']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value19']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[5].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value20']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[5].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value20']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value20']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value21']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[5].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value21']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value21']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value22']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[5].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value22']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value22']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value23']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[5].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value23']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value23']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        
                     </div>
-                  </el-collapse-item>
-                </el-collapse>
-                
-                <el-form-item
-                  prop="discipline"
-                  :label="bossList.length + 1 + '、惩罚金额'"
-                >
-                  <el-input v-model="dynamicValidateForm.discipline" type="number"></el-input>
-                </el-form-item>
-              </el-form>
+                  </div>
+                  <div class="flex-1 font-12">
+                    <div class="total-detail">
+                        <dl class="dl flex font-18">
+                          <dt class="w70">Boss</dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <div class="flex-1">装备</div>
+                              <div class="w80">金额</div>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[6].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value24']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[6].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value24']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value24']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value25']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[6].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value25']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value25']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value26']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[6].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value26']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value26']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value27']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[6].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value27']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value27']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[7].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value28']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[7].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value28']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value28']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value29']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[7].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value29']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value29']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value30']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[7].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value30']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value30']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value31']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[7].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value31']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value31']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[8].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value32']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[8].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value32']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value32']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value33']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[8].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value33']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value33']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value34']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[8].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value34']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value34']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value35']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[8].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value35']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value35']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[9].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value36']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[9].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value36']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value36']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value37']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[9].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value37']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value37']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value38']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[9].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value38']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value38']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value39']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[9].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value39']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value39']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[10].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value40']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[10].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value40']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value40']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value41']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[10].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value41']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value41']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value42']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[10].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value42']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value42']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value43']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[10].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value43']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value43']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[11].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value44']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[11].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value44']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value44']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value45']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[11].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value45']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value45']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value46']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[11].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value46']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value46']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value47']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[11].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value47']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value47']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                    </div>
+                  </div>
+                  <div class="flex-1 font-12">
+                    <div class="total-detail">
+                        <dl class="dl flex font-18">
+                          <dt class="w70">Boss</dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <div class="flex-1">装备</div>
+                              <div class="w80">金额</div>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[12].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value48']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[12].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value48']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value48']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value49']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[12].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value49']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value49']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value50']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[12].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value50']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value50']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value51']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[12].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value51']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value51']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[13].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value52']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[13].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value52']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value52']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value53']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[13].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value53']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value53']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value54']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[13].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value54']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value54']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value55']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[13].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value55']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value55']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg1">
+                          <dt class="w70">
+                            {{bossList[14].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value56']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[14].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value56']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value56']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value57']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[14].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value57']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value57']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value58']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[14].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value58']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value58']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value59']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[14].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value59']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value59']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value60']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[14].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value60']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value60']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 bg2">
+                          <dt class="w70">
+                            {{bossList[15].name}}
+                          </dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <el-select v-model="selectedList['value61']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[15].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value61']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value61']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value62']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[15].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value62']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value62']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['value63']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[15].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['value63']"
+                              >
+                                <el-input v-model="dynamicValidateForm['value63']" size="mini">
+                              </el-form-item>
+                            </div>
+                            <div class="flex">
+                              <el-select v-model="selectedList['64']" size="mini" class="flex-1">
+                                <el-option
+                                  v-for="(item, index) in bossList[15].children"
+                                  :key="item.name"
+                                  :label="item.name"
+                                  :value="index"
+                                >
+                                </el-option>
+                              </el-select>
+                              <el-form-item
+                                class="w80"
+                                :prop="dynamicValidateForm['64']"
+                              >
+                                <el-input v-model="dynamicValidateForm['64']" size="mini">
+                              </el-form-item>
+                            </div>
+                          </dd>
+                        </dl>
+                        <dl class="dl flex pd-5 p-30 bg1">
+                          <dt class="w70">罚款</dt>
+                          <dd class="flex-1">
+                            <div class="flex">
+                              <div class="flex-1"></div>
+                              <div class="w80">
+                                <el-input size="mini" v-model="dynamicValidateForm['discipline']"/>
+                              </div>
+                            </div>
+                          </dd>
+                        </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-end flex-v-m">
+                  <div>
+                    <el-button type="primary" size="mini" @click="submitForm('dynamicValidateForm')">计算总和</el-button>
+                    <el-button size="mini" @click="resetForm('dynamicValidateForm')">重置</el-button>
+                  </div>
+                  <p class="pd-10">合计: {{ total }}</p>
+                </div>
+              </div>
+            </el-col>
+          </el-form>
+          <el-col :span="12" class="flex">
+            <div class="flex flex-2">
+              <dl class="flex-2">
+                <dt class="font-18">补助</dt>
+                <dd class="font-12 pd-5 bg3">
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value0']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value0']" @input="inputChange(0)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value1']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value1']" @input="inputChange(1)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value2']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value2']" @input="inputChange(2)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value3']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value3']" @input="inputChange(3)" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value4']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value4']" @input="inputChange(4)" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value5']"  />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value5']" @input="inputChange(5)" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value6']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value6']" @input="inputChange(6)" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value7']"  />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value7']" @input="inputChange(7)" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value8']"  />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value8']" @input="inputChange(8)" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value9']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value9']" @input="inputChange(9)" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="column['value10']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="column3['value10']" @input="inputChange(10)" />
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
+              <dl class="p-l-r-10">
+                <dt class="font-18">人数</dt>
+                <dd class="font-12 pd-5">
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value0']" @input="inputChange(0)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value1']" @input="inputChange(1)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value2']" @input="inputChange(2)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value3']" @input="inputChange(3)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value4']" @input="inputChange(4)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value5']" @input="inputChange(5)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value6']" @input="inputChange(6)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value7']" @input="inputChange(7)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value8']" @input="inputChange(8)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value9']" @input="inputChange(9)"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="countNum['value10']" @input="inputChange(10)"/>
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
+              <dl class="w80">
+                <dt class="font-18">金额</dt>
+                <dd class="font-12">
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value0']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value1']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value2']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value3']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value4']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value5']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value6']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value7']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value8']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value9']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="totals['value10']" @input="changeTotal" />
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
+              <dl class="dl flex-1">
+                <dt class="w70 font-18">分赃</dt>
+                <dd class="flex-1">
+                  <dl class="flex">
+                    <dd class="w80">
+                      总收入
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      总补助
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      剩余
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      人数
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
+              <dl class="dl flex-1">
+                <dt class="w70 font-18">补充</dt>
+                <dd class="flex-1">
+                  <dl class="flex">
+                    <dd class="visiblenone">
+                      空白
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="visiblenone">
+                      空白
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="visiblenone">
+                      空白
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="totalNumber" @input="changeAvrg" />
+                      </div>
+                      <div class="flex-1">
+                        人均
+                      </div>
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
+              <dl class="dl flex-1">
+                <dt class="w70 font-18">金额</dt>
+                <dd class="flex-1">
+                  <dl class="flex">
+                    <dd class="w80">
+                      {{total}}
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      {{finalTotal}}
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      {{leftTotal}}
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      {{arvgTotal}}
+                    </dd>
+                  </dl>
+                </dd>
+              </dl>
             </div>
-          </el-col>
-          <el-col :span="4">
-            <div>
-              <el-button type="primary" @click="submitForm('dynamicValidateForm')">计算总和</el-button>
-              <el-button @click="resetForm('dynamicValidateForm')">重置</el-button>
-            </div>
-            <div>
-              <p>合计: {{ total }}</p>
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="grid-content bg-purple-light"></div>
           </el-col>
         </el-main>
       </el-container>
     </el-container>
   </div>
-    <script src="./moshou/js//vue.js"></script>
-    <script src="./moshou/js/element.js"></script>
-    <script src="./moshou/data/index.js"></script>
+    <script src="./js//vue.js"></script>
+    <script src="./js/element.js"></script>
+    <script src="./data/index.js"></script>
     <script>
-      console.log("bossList", bossList)
       new Vue({
         el: '#app',
         data() {
           return {
+            selectedList: {
+              value0: '',
+              value1: '',
+              value2: '',
+              value3: '',
+              value4: '',
+              value5: '',
+              value6: '',
+              value7: '',
+              value8: '',
+              value9: '',
+              value10: '',
+              value11: '',
+              value12: '',
+              value13: '',
+              value14: '',
+              value15: '',
+              value16: '',
+              value17: '',
+              value18: '',
+              value19: '',
+              value20: '',
+              value21: '',
+              value22: '',
+              value23: '',
+              value24: '',
+              value25: '',
+              value26: '',
+              value27: '',
+              value28: '',
+              value29: '',
+              value30: '',
+              value31: '',
+              value32: '',
+              value33: '',
+              value34: '',
+              value35: '',
+              value36: '',
+              value37: '',
+              value38: '',
+              value39: '',
+              value40: '',
+              value41: '',
+              value42: '',
+              value43: '',
+              value44: '',
+              value45: '',
+              value46: '',
+              value47: '',
+              value48: '',
+              value49: '',
+              value50: '',
+              value51: '',
+              value52: '',
+              value53: '',
+              value54: '',
+              value55: '',
+              value56: '',
+              value57: '',
+              value58: '',
+              value59: '',
+              value60: '',
+              value61: '',
+              value62: '',
+              value63: '',
+              value64: '',
+              value65: '',
+              value66: '',
+              value67: '',
+              value68: '',
+              value69: '',
+              value70: ''
+            },
             total: 0,
             activeNames: [],
             bossList: [],
+            column: {
+              value0: 'T',
+              value1: '治疗',
+              value2: '泰坦（按现价）',
+              value3: '会计（）',
+              value4: '机器人（按现价）',
+              value5: '团长',
+              value6: '治疗前二（MS组100、50）',
+              value7: '治疗前二（QS、D组100、50）',
+              value8: 'DPS前三（近战321）',
+              value9: 'DPS前三（远程321）',
+              value10: '单体第一（远程100+近战100）',
+              value11: ''
+            },
+            column3: {
+              value0: '500',
+              value1: '300',
+              value2: '',
+              value3: '',
+              value4: '',
+              value5: '',
+              value6: '',
+              value7: '',
+              value8: '',
+              value9: '',
+              value10: '',
+              value11: ''
+            },
+            countNum: {
+              value0: '',
+              value1: '',
+              value2: '',
+              value3: '',
+              value4: '',
+              value5: '',
+              value6: '',
+              value7: '',
+              value8: '',
+              value9: '',
+              value10: '',
+              value11: ''
+            },
+            totals: {
+              value0: '',
+              value1: '',
+              value2: '',
+              value3: '',
+              value4: '',
+              value5: '',
+              value6: '',
+              value7: '',
+              value8: '',
+              value9: '',
+              value10: '',
+              value11: ''
+            },
             dynamicValidateForm: {
-              0: [],
-              1: [],
-              2: [],
-              3: [],
-              4: [],
-              5: [],
-              6: [],
-              7: [],
-              8: [],
-              9: [],
-              10: [],
-              11: [],
-              12: [],
-              13: [],
-              14: [],
-              15: [],
-              16: [],
-              17: [],
-              18: [],
-              19: [],
-              20: [],
-              21: [],
-              22: [],
-              23: [],
-              24: [],
-              25: [],
+              value0: '',
+              value1: '',
+              value2: '',
+              value3: '',
+              value4: '',
+              value5: '',
+              value6: '',
+              value7: '',
+              value8: '',
+              value9: '',
+              value10: '',
+              value11: '',
+              value12: '',
+              value13: '',
+              value14: '',
+              value15: '',
+              value16: '',
+              value17: '',
+              value18: '',
+              value19: '',
+              value20: '',
+              value21: '',
+              value22: '',
+              value23: '',
+              value24: '',
+              value25: '',
+              value26: '',
+              value27: '',
+              value28: '',
+              value29: '',
+              value30: '',
+              value31: '',
+              value32: '',
+              value33: '',
+              value34: '',
+              value35: '',
+              value36: '',
+              value37: '',
+              value38: '',
+              value39: '',
+              value40: '',
+              value41: '',
+              value42: '',
+              value43: '',
+              value44: '',
+              value45: '',
+              value46: '',
+              value47: '',
+              value48: '',
+              value49: '',
+              value50: '',
+              value51: '',
+              value52: '',
+              value53: '',
+              value54: '',
+              value55: '',
+              value56: '',
+              value57: '',
+              value58: '',
+              value59: '',
+              value60: '',
+              value61: '',
+              value62: '',
+              value63: '',
+              value64: '',
+              value65: '',
+              value66: '',
+              value67: '',
+              value68: '',
+              value69: '',
+              value70: '',
               discipline: ''
-            }
+            },
+            finalTotal: 0,
+            leftTotal: 0,
+            totalNumber: 1,
+            arvgTotal: 0
           }
         },
         created() {
-          this.initFormData();
+          this.bossList = bossList;
         },
         methods: {
-          // 初始化Boss以及装备数据
-          initFormData() {
-            this.bossList = bossList;
-            this.bossList.forEach((v, index) => {
-              v.children.forEach(j => {
-                this.dynamicValidateForm[index].push({
-                  value: '',
-                  key: j.name + Date.now()
-                })
-              })
-            });
+          changeAvrg(val) {
+            if (val == parseInt(val)) {
+              this.arvgTotal = Math.ceil(this.leftTotal / this.totalNumber);
+            }
           },
-          // 清空总计金额为0
-          resetTotal() {
-            this.total = 0;
+          changeTotal(val) {
+            if (val == parseInt(val)) {
+              this.getTotals();
+            }
+          },
+          // 剩余钱
+          getTotals() {
+            this.finalTotal = 0;
+            for(let n in this.totals) {
+              if (parseInt(this.totals[n]) == this.totals[n]) {
+                this.finalTotal += parseInt(this.totals[n])
+              }
+            }
+            this.leftTotal = this.total - this.finalTotal;
+            this.arvgTotal = Math.ceil(this.leftTotal / this.totalNumber);
+          },
+          inputChange(index) {
+            const t1 = this.column3['value' + index];
+            const num = this.countNum['value' + index];
+            if (t1 == parseInt(t1)) {
+              if (num == parseInt(num)) {
+                this.totals['value' + index] = t1 * num;
+                this.getTotals();
+              }
+            }
           },
           // 计算表单
           submitForm(formName) {
-            this.resetTotal();
-            console.log("this.$refs[formName]", formName, this.$refs[formName])
-            var list = this.$refs[formName].fields;
-            list.forEach(v => {
-              var value = v.fieldValue || 0;
-              this.total += parseInt(value);
-            })
+            this.total = 0;
+            for(let n in this.dynamicValidateForm) {
+              if (parseInt(this.dynamicValidateForm[n]) == this.dynamicValidateForm[n]) {
+                this.total += parseInt(this.dynamicValidateForm[n])
+              }
+            }
+            this.getTotals();
           },
           // 重置表单
           resetForm(formName) {
             this.$refs[formName].resetFields();
             this.resetTotal();
           },
-          handleChange(val) {
-            console.log(val);
+          // 清空总计金额为0
+          resetTotal() {
+            this.total = 0;
+            this.dynamicValidateForm =  {
+              value0: '',
+              value1: '',
+              value2: '',
+              value3: '',
+              value4: '',
+              value5: '',
+              value6: '',
+              value7: '',
+              value8: '',
+              value9: '',
+              value10: '',
+              value11: '',
+              value12: '',
+              value13: '',
+              value14: '',
+              value15: '',
+              value16: '',
+              value17: '',
+              value18: '',
+              value19: '',
+              value20: '',
+              value21: '',
+              value22: '',
+              value23: '',
+              value24: '',
+              value25: '',
+              value26: '',
+              value27: '',
+              value28: '',
+              value29: '',
+              value30: '',
+              value31: '',
+              value32: '',
+              value33: '',
+              value34: '',
+              value35: '',
+              value36: '',
+              value37: '',
+              value38: '',
+              value39: '',
+              value40: '',
+              value41: '',
+              value42: '',
+              value43: '',
+              value44: '',
+              value45: '',
+              value46: '',
+              value47: '',
+              value48: '',
+              value49: '',
+              value50: '',
+              value51: '',
+              value52: '',
+              value53: '',
+              value54: '',
+              value55: '',
+              value56: '',
+              value57: '',
+              value58: '',
+              value59: '',
+              value60: '',
+              value61: '',
+              value62: '',
+              value63: '',
+              value64: '',
+              value65: '',
+              value66: '',
+              value67: '',
+              value68: '',
+              value69: '',
+              value70: '',
+              discipline: ''
+            }
           },
-          handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-          },
-          handleClose(key, keyPath) {
-            console.log(key, keyPath);
-          }
         }
       })
     </script>
