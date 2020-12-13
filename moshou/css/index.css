@@ -3,7 +3,10 @@ body {
   min-height: 100%;
   height: 100%;
 }
-body {
+body,
+dl,
+dt,
+dd {
   padding: 0;
   margin: 0;
 }
@@ -26,4 +29,85 @@ body {
   min-height: 100%;
   height: 100%;
   overflow-y: auto;
+}
+.w100 {
+  width: 100px;
+}
+.w70 {
+  width: 70px;
+}
+.w80 {
+  width: 80px;
+}
+.w50 {
+  width: 50px;
+}
+.font-12 {
+  font-size: 12px;
+}
+.font-14 {
+  font-size: 14px;
+}
+.font-18 {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px;
+}
+.text-right {
+  text-align: right;
+}
+.flex {
+  display: flex;
+}
+.flex-end {
+  justify-content: flex-end;
+}
+.flex-justify-between {
+  justify-content: space-between;
+}
+.flex-v-m {
+  align-items: center;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-1 {
+  flex: 1;
+}
+.visiblenone {
+  visibility: hidden;
+}
+.el-form-item__content {
+  margin-left: 0 !important;
+}
+.el-form-item {
+  margin-bottom: 0;
+}
+.pd-10 {
+  padding: 10px;
+}
+.pd-5 {
+  padding: 5px;
+}
+.pd-0 {
+  padding: 0;
+}
+.p-30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.p-l-r-10 {
+  padding: 0 10px;
+}
+.el-form-item__content {
+  line-height: 28px;
+}
+.bg1 {
+  background: #F2F6FC;
+}
+.bg2 {
+  background: rgb(240, 249, 235);
+}
+.bg3 {
+  background: rgb(254, 240, 240);
 }
