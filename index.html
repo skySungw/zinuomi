@@ -1271,13 +1271,91 @@
                             </div>
                           </dd>
                         </dl>
-                        <dl class="dl flex pd-5 p-30 bg1">
-                          <dt class="w70">罚款</dt>
+                        <dl class="dl flex pd-5 pt-15 bg1">
+                          <dt class="w70 text-red">罚款</dt>
                           <dd class="flex-1">
                             <div class="flex">
-                              <div class="flex-1"></div>
+                              <div class="flex-1">
+                                <el-form-item
+                                  class="flex-1"
+                                >
+                                  <el-input v-model="reasons['reason']" size="mini">
+                                </el-form-item>
+                              </div>
                               <div class="w80">
                                 <el-input size="mini" v-model="dynamicValidateForm['discipline']"/>
+                              </div>
+                            </div>
+                            <div class="flex">
+                              <div class="flex-1">
+                                <el-form-item
+                                  class="flex-1"
+                                >
+                                  <el-input v-model="reasons['reason1']" size="mini">
+                                </el-form-item>
+                              </div>
+                              <div class="w80">
+                                <el-input size="mini" v-model="dynamicValidateForm['discipline1']"/>
+                              </div>
+                            </div>
+                            <div class="flex">
+                              <div class="flex-1">
+                                <el-form-item
+                                  class="flex-1"
+                                >
+                                  <el-input v-model="reasons['reason2']" size="mini">
+                                </el-form-item>
+                              </div>
+                              <div class="w80">
+                                <el-input size="mini" v-model="dynamicValidateForm['discipline2']"/>
+                              </div>
+                            </div>
+                            <div class="flex">
+                              <div class="flex-1">
+                                <el-form-item
+                                  class="flex-1"
+                                >
+                                  <el-input v-model="reasons['reason3']" size="mini">
+                                </el-form-item>
+                              </div>
+                              <div class="w80">
+                                <el-input size="mini" v-model="dynamicValidateForm['discipline3']"/>
+                              </div>
+                            </div>
+                            <div class="flex">
+                              <div class="flex-1">
+                                <el-form-item
+                                  class="flex-1"
+                                >
+                                  <el-input v-model="reasons['reason4']" size="mini">
+                                </el-form-item>
+                              </div>
+                              <div class="w80">
+                                <el-input size="mini" v-model="dynamicValidateForm['discipline4']"/>
+                              </div>
+                            </div>
+                            <div class="flex">
+                              <div class="flex-1">
+                                <el-form-item
+                                  class="flex-1"
+                                >
+                                  <el-input v-model="reasons['reason5']" size="mini">
+                                </el-form-item>
+                              </div>
+                              <div class="w80">
+                                <el-input size="mini" v-model="dynamicValidateForm['discipline5']"/>
+                              </div>
+                            </div>
+                            <div class="flex">
+                              <div class="flex-1">
+                                <el-form-item
+                                  class="flex-1"
+                                >
+                                  <el-input v-model="reasons['reason6']" size="mini">
+                                </el-form-item>
+                              </div>
+                              <div class="w80">
+                                <el-input size="mini" v-model="dynamicValidateForm['discipline6']"/>
                               </div>
                             </div>
                           </dd>
@@ -1285,12 +1363,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-end flex-v-m">
-                  <div>
-                    <el-button type="primary" size="mini" @click="submitForm('dynamicValidateForm')">计算总和</el-button>
-                    <el-button size="mini" @click="resetForm('dynamicValidateForm')">重置</el-button>
-                  </div>
-                  <p class="pd-10">合计: {{ total }}</p>
+                <div class="flex flex-end flex-v-m relative">
+                  <p class="pd-10 absolute right-500">合计: {{ total }}</p>
                 </div>
               </div>
             </el-col>
@@ -1298,7 +1372,10 @@
           <el-col :span="12" class="flex">
             <div class="flex flex-2">
               <dl class="flex-2">
-                <dt class="font-18">补助</dt>
+                <dt class="font-18 flex flex-justify-between">
+                  <span>补助</span>
+                  <span class="w80 inline-block">每人</span>
+                </dt>
                 <dd class="font-12 pd-5 bg3">
                   <dl class="flex">
                     <dt class="flex-1">
@@ -1389,6 +1466,119 @@
                     </dd>
                   </dl>
                 </dd>
+                <dt class="font-18 flex flex-justify-between">
+                  <span>总补助</span>
+                  <span class="inline-block">{{finalTotal}}</span>
+                </dt>
+                <dt class="pd-5 flex flex-justify-between">
+                  <span class="text-red">罚款</span>
+                </dt>
+                <dd class="font-12 pd-5 bg3">
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason7']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline7']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason8']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline8']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason9']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline9']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason10']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline10']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason11']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline11']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason12']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline12']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason13']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline13']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason14']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline14']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason15']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline15']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason16']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline16']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason17']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline17']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason18']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline18']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dt class="flex-1">
+                      <el-input size="mini" v-model="reasons['reason19']" />
+                    </dt>
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline19']"/>
+                    </dd>
+                  </dl>
+                </dd>
               </dl>
               <dl class="p-l-r-10">
                 <dt class="font-18">人数</dt>
@@ -1449,10 +1639,83 @@
                     </dd>
                   </dl>
                 </dd>
+                <dt class="pd-5 text-red pt-15">罚款</dt>
+                <dd class="font-12 pd-5">
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason20']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason21']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason22']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason23']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason24']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason25']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason26']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason27']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason28']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason29']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason30']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason31']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason32']"/>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="reasons['reason33']"/>
+                    </dd>
+                  </dl>
+                </dd>
               </dl>
               <dl class="w80">
                 <dt class="font-18">金额</dt>
-                <dd class="font-12">
+                <dd class="font-12 pd-5">
                   <dl class="flex">
                     <dd class="w80">
                       <el-input size="mini" v-model="totals['value0']" @input="changeTotal" />
@@ -1509,8 +1772,81 @@
                     </dd>
                   </dl>
                 </dd>
+                <dt class="pd-5 text-red pt-15">金额</dt>
+                <dd class="font-12 pd-5">
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline20']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline21']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline22']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline23']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline24']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline25']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline26']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline27']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline28']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline29']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline30']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline31']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline32']" />
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="w80">
+                      <el-input size="mini" v-model="dynamicValidateForm['discipline33']" />
+                    </dd>
+                  </dl>
+                </dd>
               </dl>
-              <dl class="dl flex-1">
+              <dl class="dl flex-1 h28">
                 <dt class="w70 font-18">分赃</dt>
                 <dd class="flex-1">
                   <dl class="flex">
@@ -1533,9 +1869,64 @@
                       人数
                     </dd>
                   </dl>
+                  <dl class="flex bg3">
+                    <dd class="visiblenone ">
+                      空白
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      DPS人均
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      每组5人共计
+                    </dd>
+                  </dl>
+                  <dl class="flex bg3">
+                    <dd class="visiblenone ">
+                      空白
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      治疗组人均
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      每组5人共计
+                    </dd>
+                  </dl>
+                  <dl class="flex bg3">
+                    <dd class="visiblenone ">
+                      空白
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      T（+泰坦+补助）
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      T（+泰坦+补助）
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      T（+泰坦+补助）
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="">
+                      T（+泰坦+补助）
+                    </dd>
+                  </dl>
                 </dd>
               </dl>
-              <dl class="dl flex-1">
+              <dl class="dl flex-1 h28">
                 <dt class="w70 font-18">补充</dt>
                 <dd class="flex-1">
                   <dl class="flex">
@@ -1563,30 +1954,174 @@
                       </div>
                     </dd>
                   </dl>
+                  <dl class="flex bg3 pl-10">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        补助
+                      </div>
+                      <div class="flex-1">
+                        合剂
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub1']" @input="sub(1)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji1']"/>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub2']" @input="sub(2)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji2']"/>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex bg3 pl-10">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        补助
+                      </div>
+                      <div class="flex-1">
+                        合剂
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub3']" @input="sub(3)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji3']" />
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub4']" @input="sub(4)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji4']" />
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex bg3 pl-10">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        补助
+                      </div>
+                      <div class="flex-1">
+                        合剂
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub5']" @input="sub(5)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji5']"/>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub6']" @input="sub(6)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji6']"/>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub7']" @input="sub(7)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji7']"/>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="subs['sub8']" @input="sub(8)"/>
+                      </div>
+                      <div class="flex-1">
+                        <el-input size="mini" v-model="hejis['heji8']"/>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl class="flex pt-15">
+                    <dd class="flex-1 flex">
+                      <div class="flex-1">
+                        <el-button type="primary" size="mini" @click="submitForm('dynamicValidateForm')">计算总和</el-button>
+                      </div>
+                      <div class="flex-1">
+                        <el-button size="mini" @click="resetForm('dynamicValidateForm')">重置</el-button>
+                      </div>
+                    </dd>
+                  </dl>
                 </dd>
               </dl>
-              <dl class="dl flex-1">
+              <dl class="dl flex-1 h28">
                 <dt class="w70 font-18">金额</dt>
                 <dd class="flex-1">
                   <dl class="flex">
-                    <dd class="w80">
-                      {{total}}
-                    </dd>
+                    <dd class="pl-10">{{total}}</dd>
                   </dl>
                   <dl class="flex">
-                    <dd class="w80">
-                      {{finalTotal}}
-                    </dd>
+                    <dd class="pl-10">{{finalTotal}}</dd>
                   </dl>
                   <dl class="flex">
-                    <dd class="w80">
-                      {{leftTotal}}
-                    </dd>
+                    <dd class="pl-10">{{leftTotal}}</dd>
                   </dl>
                   <dl class="flex">
-                    <dd class="w80">
-                      {{arvgTotal}}
-                    </dd>
+                    <dd class="pl-10">{{arvgTotal}}</dd>
+                  </dl>
+                  <dl class="flex bg3">
+                    <dd class="pl-10">金额</dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total1']}}</dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total2']}}</dd>
+                  </dl>
+                  <dl class="flex bg3">
+                    <dd class="pl-10">金额</dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total3']}}</dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total4']}}</dd>
+                  </dl>
+                  <dl class="flex bg3">
+                    <dd class="pl-10">金额</dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total5']}}</dd>
+                  </dl><dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total6']}}</dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total7']}}</dd>
+                  </dl>
+                  <dl class="flex">
+                    <dd class="pl-10">{{buzhuTotal['total8']}}</dd>
                   </dl>
                 </dd>
               </dl>
@@ -1808,18 +2343,147 @@
               value68: '',
               value69: '',
               value70: '',
-              discipline: ''
+              discipline: '',
+              discipline1: '',
+              discipline2: '',
+              discipline3: '',
+              discipline4: '',
+              discipline5: '',
+              discipline6: '',
+              discipline7: '',
+              discipline8: '',
+              discipline9: '',
+              discipline10: '',
+              discipline11: '',
+              discipline12: '',
+              discipline13: '',
+              discipline14: '',
+              discipline15: '',
+              discipline16: '',
+              discipline17: '',
+              discipline18: '',
+              discipline19: '',
+              discipline20: '',
+              discipline21: '',
+              discipline22: '',
+              discipline23: '',
+              discipline24: '',
+              discipline25: '',
+              discipline26: '',
+              discipline27: '',
+              discipline28: '',
+              discipline29: '',
+              discipline30: '',
+              discipline31: '',
+              discipline32: '',
+              discipline33: '',
+              discipline34: '',
+              discipline35: ''
+            },
+            reasons: {
+              reason: '罚款',
+              reason1: '罚款',
+              reason2: '罚款',
+              reason3: '罚款',
+              reason4: '罚款',
+              reason5: '罚款',
+              reason6: '罚款',
+              reason7: '罚款',
+              reason8: '罚款',
+              reason9: '罚款',
+              reason10: '罚款',
+              reason11: '罚款',
+              reason12: '罚款',
+              reason13: '罚款',
+              reason14: '罚款',
+              reason15: '罚款',
+              reason16: '罚款',
+              reason17: '罚款',
+              reason18: '罚款',
+              reason19: '罚款',
+              reason20: '罚款',
+              reason21: '罚款',
+              reason22: '罚款',
+              reason23: '罚款',
+              reason24: '罚款',
+              reason25: '罚款',
+              reason26: '罚款',
+              reason27: '罚款',
+              reason28: '罚款',
+              reason29: '罚款',
+              reason30: '罚款',
+              reason31: '罚款',
+              reason32: '罚款',
+              reason33: '罚款',
+              reason34: '罚款',
+              reason35: '罚款'
             },
             finalTotal: 0,
             leftTotal: 0,
             totalNumber: 1,
-            arvgTotal: 0
+            arvgTotal: 0,
+            subs: {
+              sub1: '',
+              sub2: '',
+              sub3: '',
+              sub4: '',
+              sub5: '',
+              sub6: '',
+              sub7: '',
+              sub8: '',
+            },
+            hejis: {
+              heji1: '',
+              heji2: '',
+              heji3: '',
+              heji4: '',
+              heji5: '',
+              heji6: '',
+              heji7: '',
+              heji8: ''
+            },
+            buzhuTotal: {
+              total1: 0,
+              total2: 0,
+              total3: 0,
+              total4: 0,
+              total5: 0,
+              total6: 0,
+              total7: 0,
+              total8: 0
+            }
           }
         },
         created() {
           this.bossList = bossList;
         },
         methods: {
+          sub(index) {
+            const t1 = this.subs['sub' + index];
+            if (t1 != parseInt(t1)) {
+              return false;
+            }
+            var money = parseInt(t1);
+            var num = money * 5;
+            switch(index) {
+              case 1:
+                this.subs['sub2'] = num;
+                this.buzhuTotal['total' + index] = money + this.arvgTotal;
+                this.buzhuTotal['total2'] = num + this.arvgTotal;
+                break;
+              case 3:
+                this.subs['sub4'] = num;
+                this.buzhuTotal['total' + index] = money + this.arvgTotal;
+                this.buzhuTotal['total4'] = num + this.arvgTotal;
+                break;
+              case 5:
+              case 6:
+              case 7:
+              case 8:
+                this.buzhuTotal['total' + index] = money + this.arvgTotal;
+              break;
+            }
+          },
           changeAvrg(val) {
             if (val == parseInt(val)) {
               this.arvgTotal = Math.ceil(this.leftTotal / this.totalNumber);
