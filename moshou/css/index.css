@@ -96,6 +96,12 @@ dd {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+.pl-10 {
+  padding-left: 10px;
+}
+.pt-15 {
+  padding-top: 15px;
+}
 .p-l-r-10 {
   padding: 0 10px;
 }
@@ -110,4 +116,23 @@ dd {
 }
 .bg3 {
   background: rgb(254, 240, 240);
+}
+.inline-block {
+  display: inline-block;
+}
+.text-red {
+  color: red;
+}
+.h28 .flex {
+  height: 28px;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.right-500 {
+  right: -500px;
+  top: 0px;
 }
