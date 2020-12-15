@@ -1846,285 +1846,256 @@
                   </dl>
                 </dd>
               </dl>
-              <dl class="dl flex-1 h28">
-                <dt class="w70 font-18">分赃</dt>
-                <dd class="flex-1">
-                  <dl class="flex">
-                    <dd class="w80">
-                      总收入
+              <div class="flex-3 flex flex-coloumn">
+                <div class="flex">
+                  <dl class="dl flex-1 h28">
+                    <dt class="w70 font-18">分赃</dt>
+                    <dd class="flex-1">
+                      <dl class="flex">
+                        <dd class="w80">
+                          总收入
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="w80">
+                          总补助
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="w80">
+                          剩余
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="w80">
+                          人数
+                        </dd>
+                      </dl>
+                      <dl class="flex bg3">
+                        <dd class="visiblenone ">
+                          空白
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="">
+                          DPS人均
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="">
+                          每组5人共计
+                        </dd>
+                      </dl>
+                      <dl class="flex bg3">
+                        <dd class="visiblenone ">
+                          空白
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="">
+                          治疗组人均
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="">
+                          每组5人共计
+                        </dd>
+                      </dl>
+                      <dl class="flex bg3">
+                        <dd class="visiblenone ">
+                          空白
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="">
+                          泰坦组人均
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="">
+                          每组5人共计
+                        </dd>
+                      </dl>
                     </dd>
                   </dl>
-                  <dl class="flex">
-                    <dd class="w80">
-                      总补助
+                  <dl class="dl flex-1 h28">
+                    <dt class="w70 font-18">补充</dt>
+                    <dd class="flex-1">
+                      <dl class="flex">
+                        <dd class="visiblenone">
+                          空白
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="visiblenone">
+                          空白
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="visiblenone">
+                          空白
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="totalNumber" @input="changeAvrg" />
+                          </div>
+                          <div class="flex-1">
+                            人均
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex bg3 pl-10">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            补助
+                          </div>
+                          <div class="flex-1">
+                            合剂
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="subs['sub1']" @input="sub(1)"/>
+                          </div>
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="hejis['heji1']" @input="heji(1)"/>
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="subs['sub2']" @input="sub(2)"/>
+                          </div>
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="hejis['heji2']" @input="heji(2)"/>
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex bg3 pl-10">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            补助
+                          </div>
+                          <div class="flex-1">
+                            合剂
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="subs['sub3']" @input="sub(3)"/>
+                          </div>
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="hejis['heji3']" @input="heji(3)"/>
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="subs['sub4']" @input="sub(4)"/>
+                          </div>
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="hejis['heji4']" @input="heji(4)"/>
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex bg3 pl-10">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            补助
+                          </div>
+                          <div class="flex-1">
+                            合剂
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="subs['sub5']" @input="sub(5)"/>
+                          </div>
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="hejis['heji5']" @input="heji(5)"/>
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="subs['sub6']" @input="sub(6)"/>
+                          </div>
+                          <div class="flex-1">
+                            <el-input size="mini" v-model="hejis['heji6']" @input="heji(6)"/>
+                          </div>
+                        </dd>
+                      </dl>
+                      <dl class="flex pt-15">
+                        <dd class="flex-1 flex">
+                          <div class="flex-1">
+                            <el-button type="primary" size="mini" @click="submitForm('dynamicValidateForm')">计算总和</el-button>
+                          </div>
+                          <div class="flex-1">
+                            <el-button size="mini" @click="resetForm('dynamicValidateForm')">重置</el-button>
+                          </div>
+                        </dd>
+                      </dl>
                     </dd>
                   </dl>
-                  <dl class="flex">
-                    <dd class="w80">
-                      剩余
+                  <dl class="dl flex-1 h28">
+                    <dt class="w70 font-18">金额</dt>
+                    <dd class="flex-1">
+                      <dl class="flex">
+                        <dd class="pl-10">{{total}}</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{finalTotal}}</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{leftTotal}}</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{arvgTotal}}</dd>
+                      </dl>
+                      <dl class="flex bg3">
+                        <dd class="pl-10">金额</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{buzhuTotal['total1']}}</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{buzhuTotal['total2']}}</dd>
+                      </dl>
+                      <dl class="flex bg3">
+                        <dd class="pl-10">金额</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{buzhuTotal['total3']}}</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{buzhuTotal['total4']}}</dd>
+                      </dl>
+                      <dl class="flex bg3">
+                        <dd class="pl-10">金额</dd>
+                      </dl>
+                      <dl class="flex">
+                        <dd class="pl-10">{{buzhuTotal['total5']}}</dd>
+                      </dl><dl class="flex">
+                        <dd class="pl-10">{{buzhuTotal['total6']}}</dd>
+                      </dl>
                     </dd>
                   </dl>
-                  <dl class="flex">
-                    <dd class="w80">
-                      人数
-                    </dd>
-                  </dl>
-                  <dl class="flex bg3">
-                    <dd class="visiblenone ">
-                      空白
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      DPS人均
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      每组5人共计
-                    </dd>
-                  </dl>
-                  <dl class="flex bg3">
-                    <dd class="visiblenone ">
-                      空白
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      治疗组人均
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      每组5人共计
-                    </dd>
-                  </dl>
-                  <dl class="flex bg3">
-                    <dd class="visiblenone ">
-                      空白
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      T（+泰坦+补助）
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      T（+泰坦+补助）
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      T（+泰坦+补助）
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="">
-                      T（+泰坦+补助）
-                    </dd>
-                  </dl>
-                </dd>
-              </dl>
-              <dl class="dl flex-1 h28">
-                <dt class="w70 font-18">补充</dt>
-                <dd class="flex-1">
-                  <dl class="flex">
-                    <dd class="visiblenone">
-                      空白
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="visiblenone">
-                      空白
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="visiblenone">
-                      空白
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="totalNumber" @input="changeAvrg" />
-                      </div>
-                      <div class="flex-1">
-                        人均
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex bg3 pl-10">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        补助
-                      </div>
-                      <div class="flex-1">
-                        合剂
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub1']" @input="sub(1)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji1']"/>
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub2']" @input="sub(2)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji2']"/>
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex bg3 pl-10">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        补助
-                      </div>
-                      <div class="flex-1">
-                        合剂
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub3']" @input="sub(3)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji3']" />
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub4']" @input="sub(4)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji4']" />
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex bg3 pl-10">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        补助
-                      </div>
-                      <div class="flex-1">
-                        合剂
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub5']" @input="sub(5)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji5']"/>
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub6']" @input="sub(6)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji6']"/>
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub7']" @input="sub(7)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji7']"/>
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="subs['sub8']" @input="sub(8)"/>
-                      </div>
-                      <div class="flex-1">
-                        <el-input size="mini" v-model="hejis['heji8']"/>
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl class="flex pt-15">
-                    <dd class="flex-1 flex">
-                      <div class="flex-1">
-                        <el-button type="primary" size="mini" @click="submitForm('dynamicValidateForm')">计算总和</el-button>
-                      </div>
-                      <div class="flex-1">
-                        <el-button size="mini" @click="resetForm('dynamicValidateForm')">重置</el-button>
-                      </div>
-                    </dd>
-                  </dl>
-                </dd>
-              </dl>
-              <dl class="dl flex-1 h28">
-                <dt class="w70 font-18">金额</dt>
-                <dd class="flex-1">
-                  <dl class="flex">
-                    <dd class="pl-10">{{total}}</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{finalTotal}}</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{leftTotal}}</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{arvgTotal}}</dd>
-                  </dl>
-                  <dl class="flex bg3">
-                    <dd class="pl-10">金额</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total1']}}</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total2']}}</dd>
-                  </dl>
-                  <dl class="flex bg3">
-                    <dd class="pl-10">金额</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total3']}}</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total4']}}</dd>
-                  </dl>
-                  <dl class="flex bg3">
-                    <dd class="pl-10">金额</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total5']}}</dd>
-                  </dl><dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total6']}}</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total7']}}</dd>
-                  </dl>
-                  <dl class="flex">
-                    <dd class="pl-10">{{buzhuTotal['total8']}}</dd>
-                  </dl>
-                </dd>
-              </dl>
+                </div>
+                <div class="flex-1 flex pd-10">
+                  <textarea class="flex-1">NAXX进团需知：</textarea>
+                </div>
+              </div>
             </div>
           </el-col>
         </el-main>
@@ -2222,11 +2193,11 @@
               value3: '会计（）',
               value4: '机器人（按现价）',
               value5: '团长',
-              value6: '治疗前二（MS组100、50）',
-              value7: '治疗前二（QS、D组100、50）',
-              value8: 'DPS前三（近战321）',
-              value9: 'DPS前三（远程321）',
-              value10: '单体第一（远程100+近战100）',
+              value6: '',
+              value7: '',
+              value8: '',
+              value9: '',
+              value10: '',
               value11: ''
             },
             column3: {
@@ -2465,22 +2436,67 @@
             }
             var money = parseInt(t1);
             var num = money * 5;
+            var n = this.hejis['heji' + index];
+            if (n != parseInt(n)) {
+              n = 0;
+            }
+            if (this.arvgTotal != parseInt(this.arvgTotal)) {
+              this.arvgTotal = 0;
+            }
+            console.log('m', money)
+            console.log('n', n)
+            console.log("c",this.arvgTotal)
+            
             switch(index) {
               case 1:
                 this.subs['sub2'] = num;
-                this.buzhuTotal['total' + index] = money + this.arvgTotal;
-                this.buzhuTotal['total2'] = num + this.arvgTotal;
+                this.buzhuTotal['total' + index] = money * 1 + this.arvgTotal * 1 + n * 1;
+                this.buzhuTotal['total2'] = this.buzhuTotal['total' + index] * 5;
                 break;
               case 3:
                 this.subs['sub4'] = num;
-                this.buzhuTotal['total' + index] = money + this.arvgTotal;
-                this.buzhuTotal['total4'] = num + this.arvgTotal;
+                this.buzhuTotal['total' + index] = money * 1 + this.arvgTotal * 1 + n * 1;
+                this.buzhuTotal['total4'] = this.buzhuTotal['total' + index] * 5;
                 break;
               case 5:
-              case 6:
-              case 7:
-              case 8:
-                this.buzhuTotal['total' + index] = money + this.arvgTotal;
+                this.subs['sub6'] = num;
+                this.buzhuTotal['total' + index] = money * 1 + this.arvgTotal * 1 + n * 1;
+                this.buzhuTotal['total6'] = this.buzhuTotal['total' + index] * 5;
+              break;
+            }
+          },
+          heji(index) {
+            const t1 = this.hejis['heji' + index];
+            if (t1 != parseInt(t1)) {
+              return false;
+            }
+            var money = parseInt(t1);
+            var num = money * 5;
+            var n = this.subs['sub' + index];
+            if (n != parseInt(n)) {
+              n = 0;
+            }
+            if (this.arvgTotal != parseInt(this.arvgTotal)) {
+              this.arvgTotal = 0;
+            }
+            console.log('m1', money)
+            console.log('n1', n)
+            console.log("c1",this.arvgTotal)
+            switch(index) {
+              case 1:
+                this.hejis['heji2'] = num;
+                this.buzhuTotal['total' + index] = money * 1 + this.arvgTotal * 1 + n * 1;
+                this.buzhuTotal['total2'] = this.buzhuTotal['total' + index] * 5;
+                break;
+              case 3:
+                this.hejis['heji4'] = num;
+                this.buzhuTotal['total' + index] = money * 1 + this.arvgTotal * 1 + n * 1;
+                this.buzhuTotal['total4'] = this.buzhuTotal['total' + index] * 5;
+                break;
+              case 5:
+                this.hejis['heji6'] = num;
+                this.buzhuTotal['total' + index] = money * 1 + this.arvgTotal * 1 + n * 1;
+                this.buzhuTotal['total6'] = this.buzhuTotal['total' + index] * 5;
               break;
             }
           },

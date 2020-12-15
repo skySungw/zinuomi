@@ -59,6 +59,9 @@ dd {
 .flex {
   display: flex;
 }
+.flex-coloumn {
+  flex-direction: column;
+}
 .flex-end {
   justify-content: flex-end;
 }
@@ -67,6 +70,9 @@ dd {
 }
 .flex-v-m {
   align-items: center;
+}
+.flex-3 {
+  flex: 3;
 }
 .flex-2 {
   flex: 2;
