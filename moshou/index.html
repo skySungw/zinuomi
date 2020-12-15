@@ -1908,7 +1908,7 @@
                       </dl>
                       <dl class="flex">
                         <dd class="">
-                          泰坦组人均
+                          坦克组人均
                         </dd>
                       </dl>
                       <dl class="flex">
@@ -2394,24 +2394,24 @@
             totalNumber: 1,
             arvgTotal: 0,
             subs: {
-              sub1: '',
-              sub2: '',
-              sub3: '',
-              sub4: '',
-              sub5: '',
-              sub6: '',
-              sub7: '',
-              sub8: '',
+              sub1: 0,
+              sub2: 0,
+              sub3: 0,
+              sub4: 0,
+              sub5: 0,
+              sub6: 0,
+              sub7: 0,
+              sub8: 0,
             },
             hejis: {
-              heji1: '',
-              heji2: '',
-              heji3: '',
-              heji4: '',
-              heji5: '',
-              heji6: '',
-              heji7: '',
-              heji8: ''
+              heji1: 0,
+              heji2: 0,
+              heji3: 0,
+              heji4: 0,
+              heji5: 0,
+              heji6: 0,
+              heji7: 0,
+              heji8: 0
             },
             buzhuTotal: {
               total1: 0,
@@ -2540,6 +2540,12 @@
               }
             }
             this.getTotals();
+            this.sub(1);
+            this.sub(3);
+            this.sub(5);
+            this.heji(1);
+            this.heji(3);
+            this.heji(5);
           },
           // 重置表单
           resetForm(formName) {
